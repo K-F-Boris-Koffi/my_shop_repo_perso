@@ -62,7 +62,7 @@ if(isset($_POST['send']))
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 
-                $sql = "INSERT INTO users (email, username, password) VALUES (:email, :username, :password)";
+                $sql = "INSERT INTO users (email, username, password, admin) VALUES (:email, :username, :password, 0)";
                 $stmt = $connexion->prepare($sql);
                 $result = $stmt->execute(array('email'=>$email, 'username'=>$user_name,  'password'=>$password_hash));
 
