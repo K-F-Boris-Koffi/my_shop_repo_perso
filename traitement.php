@@ -33,10 +33,12 @@ if(isset($_POST['send']))
         if($user_get_name)
         {
             $user_name_exist = true;
+            $_SESSION['user_get_name'] = "ce nom d'utilisateur est déjà utilisé";
         } 
         else 
         {
             $user_name_exist = false;
+            $_SESSION['user_get_name'] = "";
 
         }
 
@@ -47,10 +49,13 @@ if(isset($_POST['send']))
         if ($user_get_email)
         {
             $email_exist = true;
+            $_SESSION['email_exist'] = "ce email est déjà utilisé";
         } 
         else 
         {
             $email_exist = false;
+            $_SESSION['email_exist'] = "";
+
 
         }
 
@@ -72,6 +77,7 @@ if(isset($_POST['send']))
                 if($result) 
                 {
                     $message = 'Inscription réussie!';
+                    $_SESSION['password_non_conforme'] = "";
                     header('Location: connexion.php');
                 } 
                 else 
@@ -82,7 +88,9 @@ if(isset($_POST['send']))
             }
             else
             {
+                $_SESSION['password_non_conforme'] = "Les mot de passe ne corresponde pas";
                 header('Location: inscription.php');
+                
             }
 
 
