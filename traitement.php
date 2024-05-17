@@ -1,26 +1,20 @@
 <?php
 
+session_start();
 
-// try 
-// {
-
-//     $connexion = new PDO("mysql:host=localhost;dbname=my_shop;$port=3306", 'root', '1305');
-    
-// }
-// catch( PDOException $Exception ) 
-// {
-
-//     $message_error = $Exception->getMessage();
-// }
 
 include_once('db_config.php');
+
+
 
 
 if(isset($_POST['send']))
 {
 
     $user_name = $_POST['user_name'];
+    $_SESSION['user_name'] = $user_name;
     $email = $_POST['email'];
+    echo $_SESSION['email'] = $email;
     $password = $_POST['password'];
     $password_verify = $_POST['password_verify'];
 
@@ -88,7 +82,7 @@ if(isset($_POST['send']))
             }
             else
             {
-                $_SESSION['password_non_conforme'] = "Les mot de passe ne corresponde pas";
+                $_SESSION['password_non_conforme'] = "Les mot de passe ne correspondent pas";
                 header('Location: inscription.php');
                 
             }

@@ -1,8 +1,8 @@
 
 <?php
 
-include_once('db_config.php');
 
+include_once('db_config.php');
 
 
 
@@ -16,31 +16,48 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $pre_sql = $connexion->prepare($sql);
     $pre_sql->execute(['email' => $email]);
     $user = $pre_sql->fetch();
-
-    if ($user && password_verify($password, $user['password'])) 
+    if($user['email'])
     {
-        // session_start();
-        // $_SESSION['user_id'] = $user['id'];
-        // header('Location: dashbord_vendeur.php');
+        $_SESSION['email_not_exist'] = '';
 
-        if($user['admin']==1)
+        if($user && password_verify($password, $user['password'])) 
         {
-            session_start();
-            $_SESSION['user_id'] = $user['id'];
-            header('Location: dashbord_admin.php');
-        }
+
+            $_SESSION['email_not_exist'] = 'Email non reconnue';
+            
+            if($user['admin']==1)
+            {
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                header('Location: admin.php');
+            }
+            else
+            {
+                session_start();
+                $_SESSION['user_id'] = $user['id'];
+                header('Location: dashbord_vendeur.php');
+             }
+        } 
         else
         {
-            session_start();
-            $_SESSION['user_id'] = $user['id'];
-            header('Location: dashbord_vendeur.php');
+            if($_POST['password']!=null)
+            {
+                $_SESSION['password_incorrect'] = 'Mot de passe incorrect';
+                // echo "ok";
+                // echo $_POST['password'];
+                
+            }
         }
-    } 
+    }
     else
     {
-        $message = 'Identifiants Incorrect';
+        $_SESSION['email_not_exist'] = 'Email non reconnue';
     }
+
+    
 }
+
+
 
 ?>
 
@@ -81,6 +98,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                       <div>
                           <label for="email" class="block mb-2 text-sm font-medium text-gray-900   ">Your email</label>
                           <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="name@company.com" required="">
+                          <span class="text-xs text-red-600"><?php echo $_SESSION['email_not_exist']; ?></span>
                       </div>
                       <div>
                           <label for="password" class="block mb-2 text-sm font-medium text-gray-900   ">Password</label>
@@ -91,19 +109,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                               <div class="flex items-center h-5">
                               </div>
                               <div class="ml-3 text-sm">
-                                <p class="text-red-600">
-                                    <?php if(!empty($message))
-                                            {
-                                                echo $message;
-                                            }
-                                        
-                                    ?>
-                                </p>
+                              <span class="text-xs text-red-600"><?php echo$_SESSION['password_incorrect']; ?></span>
                               </div>
                           </div>
                           <a href="#" class="text-sm font-medium text-primary-600 hover:underline text-white">Forgot password?</a>
                       </div>
-                      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Sign in</button>
+                      <input type="submit" value="Envoyer" name="send" class="w-full text-white bg-blue-700 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">
                       <p class="text-sm  font-light text-gray-900 ">
                          <span class="mr-2"> Don't have an account yet? </span><a href="inscription.php" class="font-medium text-blue-700 hover:underline ">Sign up</a>
                       </p>

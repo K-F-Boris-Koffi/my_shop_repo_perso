@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+
+if(!isset($_POST['send']))
+{
+    session_destroy();
+}
+
+?>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -30,14 +44,14 @@
                   <form class="space-y-4 md:space-y-6" method="post" action="traitement.php">
                         <div>
                             <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900   ">Your username</label>
-                            <input type="text" name="user_name" id="user_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "  required="">
-                            <span class="text-xs text-red-600"><?php echo $_SESSION['user_get_name'] ?></span>
+                            <input type="text" name="user_name" id="user_name" value="<?php echo $_SESSION['user_name'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "  required="">
+                            <span class="text-xs text-red-600"><?php echo $_SESSION['user_get_name']; ?></span>
                         </div> 
                         
                         <div>
                           <label for="email" class="block mb-2 text-sm font-medium text-gray-900   ">Your email</label>
-                          <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="name@company.com" required="">
-                          <span class="text-xs text-red-600"><?php echo $_SESSION['email_exist'] ?></span>
+                          <input type="email" name="email" id="email" value="<?php echo $_SESSION['email'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="name@company.com" required="">
+                          <span class="text-xs text-red-600"><?php echo $_SESSION['email_exist']; ?></span>
                       </div>
                       <div>
                           <label for="password" class="block mb-2 text-sm font-medium text-gray-900   ">Password</label>
@@ -47,7 +61,7 @@
                       <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900   ">Password confirmation</label>
                         <input type="password" name="password_verify" id="password_verify" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
-                        <span class="text-xs text-red-600"><?php echo $_SESSION['password_non_conforme'] ?></span>
+                        <span class="text-xs text-red-600"><?php echo $_SESSION['password_non_conforme']; ?></span>
                      </div>
                       <input name="send" type="submit" class="w-full text-white bg-blue-700 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">
                       

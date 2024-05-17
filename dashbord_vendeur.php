@@ -17,7 +17,7 @@ include_once('db_config.php');
 $sql = "SELECT username FROM users WHERE id = :user_id";
 $pre_sql = $connexion->prepare($sql);
 $pre_sql->execute(['user_id' => $_SESSION['user_id']]);
-$username = $pre_sql->fetch();
+$user = $pre_sql->fetch();
 
 
 
@@ -48,7 +48,7 @@ $username = $pre_sql->fetch();
         <div>
             <div class="mt-8 text-center">
                 <img src="assets/profil.jpeg" alt="" class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28">
-                <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block"><?php echo $username['username'] ?></h5>
+                <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block"><?php echo $user['username'] ?></h5>
                 <span class="hidden text-gray-400 lg:block">Vendeur</span>
             </div>
 
