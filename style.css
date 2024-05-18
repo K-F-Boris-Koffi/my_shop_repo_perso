@@ -40,7 +40,6 @@
         font-size: 2rem;
 
         font-family: "Kanit", sans-serif;
-        font-weight: 100;
         font-style: normal;
 
     }
@@ -323,7 +322,7 @@
         justify-content: center;
         gap: 5%;
         height: 100%;
-        font-family: "Poppins";
+        
         font-weight: normal;
     }
     #block2 nav ul
@@ -574,7 +573,7 @@
         transform: scale(1.1);
     }
     
-    .section_articles p
+    .section_articles > p
     {
         text-align: center;
         height: 20%;
@@ -938,6 +937,7 @@ input[type="range"] {
       display: flex;
       /* align-items: center; */
       font-size: 1.5rem;
+      overflow: hidden;
   }
   div.grid-items > div:last-child div.price
   {

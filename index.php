@@ -1,3 +1,23 @@
+<?php
+
+$contenu=[];
+try{
+        $pdo = new PDO ("mysql:host=localhost;dbname=my_shop;port=3306" ,"root","07746118");
+        $select = "SELECT * FROM products ORDER BY id DESC LIMIT 4";
+        $value = $pdo->query($select);
+        while($rows=$value->fetch()){
+            $contenu[]=$rows;
+        }
+        $contenu;
+    
+}
+catch(PDOException $Exception){
+    echo "<h3>Verifiez </h3>";
+}
+
+?>
+
+
 <!DOCTYPE html>
     <html>
     <head>
@@ -9,7 +29,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     </head>
-    <body>
+    <body>my_shop_repo_perso    
         </div>
         <header>
             <div id="block1" class="">
@@ -72,12 +92,40 @@
                 </div>
             </section>
             <section id="new" class="section_articles">
-                <p>Dernière Sortie</p>
+                <p >Dernière Sortie</p>
                 <div class="grid-container">
-                    <div class="grid-items"></div>
-                    <div class="grid-items"></div>
-                    <div class="grid-items"></div>
-                    <div class="grid-items"></div>
+                    <?php 
+                    foreach($contenu as $value){
+                        
+                    echo'<div class="grid-items">
+                            <div>'.
+                                '<img src="data:image/jpeg;base64, '.base64_encode($value ['image']).' " />'.
+                            '</div>
+                            <div>
+                                <p class="title">'.$value ['name'].'</p>
+                                <p class="description">'.$value ['description'].'</p>
+                                <div class="star-push">
+                                    <div class="star">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span class="star_off"></span>
+                                    </div>
+                                    <div class="push">
+                                        <button class="fav"></button>
+                                        <button class="panier_push"></button>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <p>'.$value ['price'].'</p>
+                                    <span>25000 FCFA</span>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                        
+                    ?>
                 </div>
                 <button>Voir Plus</button>
             </section>

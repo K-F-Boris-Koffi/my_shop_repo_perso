@@ -1,3 +1,30 @@
+<?php
+
+$contenu=[];
+$contenu2=[];
+try{
+        $pdo = new PDO ("mysql:host=localhost;dbname=my_shop;port=3306" ,"root","07746118");
+        $select = "SELECT * FROM products ";
+        $categorie ="SELECT * FROM categories";
+        $value = $pdo->query($select);
+        $value2 =$pdo->query($categorie);
+       
+        while($rows=$value->fetch()){
+            $contenu[]=$rows;
+        }
+       while($rows2=$value2->fetch()){
+          $contenu2[]=$rows2;
+        }
+        $contenu2;
+        $contenu;
+    
+}
+catch(PDOException $Exception){
+    echo "<h3>Verifiez </h3>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -66,40 +93,18 @@
                     <ul>
                         <li>
                             <div>
-                                <a href="#">Collection</a>
-                                <span></span>
-                            </div>
-                            <ul class="filter_li_box" >
-                                <li>vintage</li>
-                                <li>Solde</li>
-                                <li>Tendance</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div>
-                                <a href="#">Color</a>
-                                <span></span>
-                            </div>
-                            <ul class="filter_li_box">
-                                <li>white</li>
-                                <li>black</li>
-                                <li>grey</li>
-                                <li>beige</li>
-                                <li>sienna</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div>
                                 <a href="#">Category</a>
                                 <span></span>
                             </div>
+                            
                             <ul class="filter_li_box">
-                                <li>lounge</li>
-                                <li>Table & Chair</li>
-                                <li>Side Table</li>
-                                <li>Shelve</li>
-                                <li>Chair</li>
+                            <?php
+                            foreach($contenu2 as $value2){
+                            echo '<li>'.$value2['name'].'</li>';
+                            }
+                            ?>
                             </ul>
+                            
                         </li>
                     </ul>
                 </div>
@@ -114,479 +119,45 @@
                         </div>
                     </div>
                     <div class="box_price">
-                        <p class="min">0$</p>
-                        <p class="max">10,000$+</p>
+                        <p class="min">0 FCFA</p>
+                        <p class="max">300.000 FCFA+</p>
                     </div>
                 </div>
             </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_01.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image12.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image4.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image11.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>45900 FCFA</p>
-                        <span>75000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_02.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>11200 FCFA</p>
-                        <span>15200 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image6.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_01.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image12.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image4.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image11.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_02.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image6.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_01.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image12.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image4.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image11.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/img_vtm_02.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-items">
-                <div>
-                    <img src="images/articles/image6.jpg" alt="">
-                </div>
-                <div>
-                    <p class="title">Lorem</p>
-                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                    <div class="star-push">
-                        <div class="star">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span class="star_off"></span>
-                         </div>
-                         <div class="push">
-                            <button class="fav"></button>
-                            <button class="panier_push"></button>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>8900 FCFA</p>
-                        <span>25000 FCFA</span>
-                    </div>
-                </div>
-            </div>
+             
+            <?php 
+                    foreach($contenu as $value){
+                        
+                    echo'<div class="grid-items">
+                            <div>'.
+                                '<img src="data:image/jpeg;base64, '.base64_encode($value ['image']).' " />'.
+                            '</div>
+                            <div>
+                                <p class="title">'.$value ['name'].'</p>
+                                <p class="description">'.$value ['description'].'</p>
+                                <div class="star-push">
+                                    <div class="star">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span class="star_off"></span>
+                                    </div>
+                                    <div class="push">
+                                        <button class="fav"></button>
+                                        <button class="panier_push"></button>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <p>'.$value ['price'].' FCFA'.'</p>
+                                    <span>25000 FCFA</span>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                        
+                    ?>
+            
         </section>
         <section id="pagination">
             
