@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Shop | Acceuil</title>
         <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
         <!-- Icon CDN -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
@@ -15,9 +12,8 @@
     <body>
         </div>
         <header>
-            <button id="nav_btn"></button>
-            <div id="block1" class=" h-1/2 w-full">
-                <h1 class="logo">My <span>Shop</span>.</h1>
+            <div id="block1" class="">
+                <h1 class="logo">My <span>Shop</span></h1>
                 <div id="search_box">
                     <input type="search" name="search" id="search">
                     <button></button>
@@ -40,6 +36,7 @@
                 </div>
             </div>
             <div id="block2">
+            <button id="nav_btn"></button>
                 <nav>
                     <ul id="nav_box" class="nav_btn_active">
                         <li> <a href="#">Electroniques & Accessoire</a></li>
@@ -61,12 +58,8 @@
         </header>
         <main>
             <section id="banniere">
-                    <img src="images/img2.jpeg" alt="">
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        <a href="#">Lorem</a>
-                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    <a href="#">Commander</a>
             </section>
             <section  id="view">
                 <div>
@@ -89,7 +82,7 @@
                 <button>Voir Plus</button>
             </section>
             <section id="top" class="section_articles">
-                <p>Meilleur Classements</p>
+                <p>top Classements</p>
                 <div class="grid-container">
                     <div class="grid-items"></div>
                     <div class="grid-items"></div>
@@ -110,9 +103,17 @@
             </section>
         </main>
         <footer>
+            <p>Nous Contacter</p>
+            <hr>
+            <p>
+            <a href="mailto:josue.kouassi@epitech.eu">josue.kouassi@epitech.eu</a> <br>
+            <a href="mailto:franck.koffi@epitech.eu">franck.koffi@epitech.eu</a> <br> 
+            <a href="mailto:salimata.ouattara@epitech.eu">salimata.ouattara@epitech.eu</a> <br>
+            </p>
+            <h2>&copy; copyright My Shop 2024, tout droits réserver</h2>
+            <h3>MyShop</h3>
 
         </footer>
-
 
         <script src="script.js"></script>
     </body>
